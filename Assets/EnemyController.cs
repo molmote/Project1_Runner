@@ -1,13 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
-public class EnemyController : MonoBehaviour
+public class EnemyController : EntityController
 {
-	public float EnemyHP;
-	public int EnemyAtk;
-	public int EnemyDef;
 	public int EnemySPDef;
+
+	[SerializeField] TextMeshPro m_textHP;
+	[SerializeField] TextMeshPro m_textSkillDef;
+	[SerializeField] TextMeshPro m_textAtk;
+	[SerializeField] TextMeshPro m_textDef;
+
 	[SerializeField] Transform model;
 	[SerializeField] Animator animator;
 
@@ -24,30 +28,34 @@ public class EnemyController : MonoBehaviour
     }
 
     public void Appear(int count)
-    {
-        if (count == 0)
-        {
-            EnemyHP = 5;
-            EnemyAtk = 5;
-            EnemyDef = 5;
-			EnemySPDef = 1;
-		}
-        else if (count == 1)
+	{
+		var hpValue = ScriptableDataManager.Get("EnemyHP").valueArray;
+
+		if (count < hpValue.Length)
 		{
-			EnemyHP = 10;
-			EnemyAtk = 10;
-			EnemyDef = 10;
-			EnemySPDef = 5;
+			CurrentHP = ScriptableDataManager.Get("EnemyHP").valueArray[count];
+			CurrentAtk = ScriptableDataManager.Get("EnemyAtk").valueArray[count];
+			CurrentDef = ScriptableDataManager.Get("EnemyDef").valueArray[count];
+			EnemySPDef = ScriptableDataManager.Get("EnemySPDef").valueArray[count];
 		}
         else
 		{
-			EnemyHP = 20;
-			EnemyAtk = 20;
-			EnemyDef = 10;
-			EnemySPDef = 10;
+			CurrentHP = ScriptableDataManager.Get("EnemyHP").valueArray[hpValue.Length-1];
+			CurrentAtk = ScriptableDataManager.Get("EnemyAtk").valueArray[hpValue.Length - 1];
+			CurrentDef = ScriptableDataManager.Get("EnemyDef").valueArray[hpValue.Length - 1];
+			EnemySPDef = ScriptableDataManager.Get("EnemySPDef").valueArray[hpValue.Length - 1];
 		}
 
 		model.gameObject.SetActive(true);
+		UpdateUI();
+	}
+
+	public void UpdateUI()
+	{
+		m_textHP.text = $"HP: {CurrentHP}";
+		m_textSkillDef.text = $"SP: {EnemySPDef}";
+		m_textAtk.text = $"ATK: {CurrentAtk}";
+		m_textDef.text = $"DEF: {CurrentDef}";
 	}
 
 	public void Disappear()
@@ -57,11 +65,23 @@ public class EnemyController : MonoBehaviour
 
 	public void Attack()
 	{
-
+		//animator.SetBool("Jump", false);
 	}
 
-	public void Damaged()
+	public bool Damaged(float damage)
 	{
-		animator.SetBool("Jump", true);
+		CurrentHP -= damage;
+		UpdateUI();
+
+		if (CurrentHP <= 0)
+		{
+			Disappear();
+			return true;
+		}
+		else
+		{
+			//animator.SetBool("Jump", true);
+		}
+		return false;
 	}
 }

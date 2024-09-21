@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9cd8ae12dad142d408f1fdde89bb6e04, type: 3}
+  m_Name: ScriptableDataManager
+  m_EditorClassIdentifier: 
+  Configs:
+  - TemplateName: PlayerHP
+    value1: 15
+    valueArray: 
+  - TemplateName: PlayerSP
+    value1: 10
+    valueArray: 
+  - TemplateName: PlayerAtk
+    value1: 9
+    valueArray: 
+  - TemplateName: PlayerDef
+    value1: 3
+    valueArray: 
+  - TemplateName: SkillCount
+    value1: 2
+    valueArray: 
+  - TemplateName: PotionCount
+    value1: 0
+    valueArray: 
+  - TemplateName: EnemyHP
+    value1: 0
+    valueArray: 040000000500000006000000
+  - TemplateName: EnemyAtk
+    value1: 0
+    valueArray: 040000000500000006000000
+  - TemplateName: EnemyDef
+    value1: 0
+    valueArray: 020000000300000004000000
+  - TemplateName: EnemySPDef
+    value1: 0
+    valueArray: 010000000100000002000000
+  - TemplateName: ItemAtkUp
+    value1: 3
+    valueArray: 
+  - TemplateName: ItemDefUp
+    value1: 4
+    valueArray: 
+  - TemplateName: ItemPotionHeal
+    value1: 10
+    valueArray: 
+  - TemplateName: MaxEnemyCount
+    value1: 4
+    valueArray: 

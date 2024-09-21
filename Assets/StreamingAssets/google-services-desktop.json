@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "566081320862",
+    "firebase_url": "https://myturnisover-64835-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "myturnisover-64835",
+    "storage_bucket": "myturnisover-64835.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:566081320862:android:6064d79cbab4746581088f",
+        "android_client_info": {
+          "package_name": "com.DefaultCompany.GomProject"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDOGe5gFHOkVv5cFdTW0eQg7CH6RlpDBIU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
